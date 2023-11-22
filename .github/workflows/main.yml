@@ -33,19 +33,22 @@ jobs:
       - name: Deploy to EC2
         run: |
           echo "$SSH_PRIVATE_KEY" > alma.pem
-          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil, && git clone https://github.com/Akhil-132/dockerodoo.git'      
+          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil,/dockerodoo'      
      
       - name: docker-compose
-        working-directory: dockerodoo
-        run: docker-compose up -d
+        run: |
+          pwd
+          docker-compose up -d
         
       - name: Install ngnix 
         run: |
+          pwd
           sudo apt update -y
           sudo apt install nginx -y
 
       - name: nginx configuration
         run: |
+          pwd
           sudo cp odoo.conf /etc/nginx/sites-available/       
           sudo ln -s /etc/nginx/sites-available/odoo.conf /etc/nginx/sites-enabled/
           sudo nginx -t
