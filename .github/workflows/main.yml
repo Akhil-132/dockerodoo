@@ -49,4 +49,4 @@ jobs:
 
       - name: Restart nginx service
         run: |
-          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil,/dockerodoo && sudo systemctl start nginx && sudo systemctl enable nginx && sudo systemctl status nginx'
+          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil,/dockerodoo && sudo systemctl start nginx && sudo systemctl enable nginx && sudo systemctl restart nginx'
