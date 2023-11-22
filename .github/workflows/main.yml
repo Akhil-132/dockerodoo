@@ -18,8 +18,8 @@ jobs:
       
       - name: Install ngnix 
         run: |
-          apt update -y
-          apt install nginx -y
+          sudo apt update -y
+          sudo apt install nginx -y
 
       - name: nginx configuration
         run: |
