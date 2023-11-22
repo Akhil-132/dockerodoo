@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +17,27 @@ jobs:
         run: |
           docker-compose up -d
           sudo docker ps -a
-      
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to EC2
+        run: |
+          echo "$SSH_PRIVATE_KEY" > alma.pem
+          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'mkdir -p /home/ubuntu/akhil, git clone https://github.com/Akhil-132/dockerodoo.git'      
+     
+      - name: docker-compose
+        run: docker-composer up -d
+        
       - name: Install ngnix 
         run: |
           sudo apt update -y
