@@ -17,7 +17,7 @@ jobs:
         run: docker-compose up -d
 
       - name: Checking (status odoo)
-        run: curl --head http://localhost:8069
+        run:  sudo curl --head http://localhost:8069
       
       - name: Install ngnix 
         run: |
