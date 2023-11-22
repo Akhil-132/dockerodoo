@@ -36,6 +36,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil, && git clone https://github.com/Akhil-132/dockerodoo.git'      
      
       - name: docker-compose
+        working-directory: dockerodoo
         run: docker-compose up -d
         
       - name: Install ngnix 
