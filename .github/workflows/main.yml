@@ -45,7 +45,7 @@ jobs:
 
       - name: nginx configuration
         run: |
-          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil,/dockerodoo && sudo cp odoo.conf /etc/nginx/sites-available/ && sudo ln -s /etc/nginx/sites-available/odoo.conf /etc/nginx/sites-enabled/ && sudo nginx -t'
+          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil,/dockerodoo && sudo cp odoo.conf /etc/nginx/sites-available/ && sudo ln -sf /etc/nginx/sites-available/odoo.conf /etc/nginx/sites-enabled/ && sudo nginx -t'
 
       - name: Restart nginx service
         run: |
