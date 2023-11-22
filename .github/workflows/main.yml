@@ -37,11 +37,11 @@ jobs:
      
       - name: docker-compose
         run: |
-          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil,/dockerodoo && pwd && docker-compose up -d'
+          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil,/dockerodoo && pwd && sudo docker-compose up -d'
           
       - name: Install ngnix 
         run: |
-          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil,/dockerodoosudo && apt update -y && sudo apt install nginx -y'
+          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil,/dockerodoo && sudo apt update -y && sudo apt install nginx -y'
 
       - name: nginx configuration
         run: |
