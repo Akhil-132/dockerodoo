@@ -37,24 +37,16 @@ jobs:
      
       - name: docker-compose
         run: |
-          pwd
-          docker-compose up -d
-        
+          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil,/dockerodoo && pwd && docker-compose up -d'
+          
       - name: Install ngnix 
         run: |
-          pwd
-          sudo apt update -y
-          sudo apt install nginx -y
+          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil,/dockerodoosudo && apt update -y && sudo apt install nginx -y'
 
       - name: nginx configuration
         run: |
-          pwd
-          sudo cp odoo.conf /etc/nginx/sites-available/       
-          sudo ln -s /etc/nginx/sites-available/odoo.conf /etc/nginx/sites-enabled/
-          sudo nginx -t
+          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil,/dockerodoo && sudo cp odoo.conf /etc/nginx/sites-available/ && sudo ln -s /etc/nginx/sites-available/odoo.conf /etc/nginx/sites-enabled/ && sudo nginx -t'
 
       - name: Restart nginx service
         run: |
-          sudo systemctl start nginx
-          sudo systemctl enable nginx
-          sudo systemctl status nginx
+          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil,/dockerodoo && sudo systemctl start nginx && sudo systemctl enable nginx && sudo systemctl status nginx'
