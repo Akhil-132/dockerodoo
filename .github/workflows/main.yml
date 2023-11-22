@@ -33,7 +33,7 @@ jobs:
       - name: Deploy to EC2
         run: |
           echo "$SSH_PRIVATE_KEY" > alma.pem
-          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 ''cd  /home/ubuntu/akhil,' 'git clone https://github.com/Akhil-132/dockerodoo.git''      
+          ssh -o StrictHostKeyChecking=no -i alma.pem ubuntu@44.210.140.4 'cd  /home/ubuntu/akhil, && git pull origin master'      
      
       - name: docker-compose
         run: docker-compose up -d
